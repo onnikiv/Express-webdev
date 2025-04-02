@@ -22,7 +22,7 @@ const listAllCats = () => {
 };
 
 const findCatById = (id) => {
-  return catItems.find((item) => item.cat_id == id);
+  return catItems.find((item) => item.cat_id === parseInt(id, 10));
 };
 
 const addCat = (cat) => {

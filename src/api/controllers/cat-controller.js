@@ -15,7 +15,6 @@ const getCatById = (req, res) => {
 
 const postCat = (req, res) => {
   const result = addCat(req.body);
-  console.log(result);
   if (result.cat_id) {
     res.status(201);
     res.json({message: 'New cat added.', result});
@@ -33,7 +32,6 @@ const putCat = (req, res) => {
     cat.filename = 'oasdoadsodsaosa';
     cat.birthdate = '1920-01-01';
     res.json({message: 'Cat item updated.', cat});
-    console.log({message: 'Cat item updated.'});
   } else {
     res.sendStatus(404);
   }
@@ -42,11 +40,10 @@ const putCat = (req, res) => {
 const deleteCat = (req, res) => {
   const cat = findCatById(req.params.id);
   if (cat) {
-    res.sendStatus(200);
     const index = listAllCats().indexOf(cat);
 
     listAllCats().splice(index, 1);
-    res.json({message: 'Cat item deleted.'});
+    res.json({message: 'Cat item deleted.', cat});
   } else {
     res.sendStatus(404);
   }
