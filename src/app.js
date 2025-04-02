@@ -11,6 +11,6 @@ app.get('/', (req, res) => {
   res.send('Here will the my Express assignments :)');
 });
 
-app.use('/api/vi', api);
+app.use('/api/v1', api);
 
 export default app;
