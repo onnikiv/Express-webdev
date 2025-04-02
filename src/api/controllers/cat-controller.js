@@ -15,6 +15,7 @@ const getCatById = (req, res) => {
 
 const postCat = (req, res) => {
   const result = addCat(req.body);
+  console.log(result);
   if (result.cat_id) {
     res.status(201);
     res.json({message: 'New cat added.', result});
@@ -24,13 +25,31 @@ const postCat = (req, res) => {
 };
 
 const putCat = (req, res) => {
-  // not implemented in this example, this is future homework
-  res.sendStatus(200);
+  const cat = findCatById(req.params.id);
+  if (cat) {
+    cat.cat_name = 'Jorma';
+    cat.weight = 6;
+    cat.owner = 'Test';
+    cat.filename = 'oasdoadsodsaosa';
+    cat.birthdate = '1920-01-01';
+    res.json({message: 'Cat item updated.', cat});
+    console.log({message: 'Cat item updated.'});
+  } else {
+    res.sendStatus(404);
+  }
 };
 
 const deleteCat = (req, res) => {
-  // not implemented in this example, this is future homework
-  res.sendStatus(200);
+  const cat = findCatById(req.params.id);
+  if (cat) {
+    res.sendStatus(200);
+    const index = listAllCats().indexOf(cat);
+
+    listAllCats().splice(index, 1);
+    res.json({message: 'Cat item deleted.'});
+  } else {
+    res.sendStatus(404);
+  }
 };
 
 export {getCat, getCatById, postCat, putCat, deleteCat};

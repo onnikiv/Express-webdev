@@ -1,4 +1,3 @@
-// mock data
 const catItems = [
   {
     cat_id: 9592,
@@ -28,7 +27,7 @@ const findCatById = (id) => {
 
 const addCat = (cat) => {
   const {cat_name, weight, owner, filename, birthdate} = cat;
-  const newId = catItems[0].cat_id + 1;
+  const newId = catItems[1].cat_id + 1; // pitää korjaa viel tulevaisuudessa
   catItems.unshift({
     cat_id: newId,
     cat_name,

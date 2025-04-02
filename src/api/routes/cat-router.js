@@ -1,8 +1,8 @@
 import express from 'express';
 import {
   getCat,
-  postCat,
   getCatById,
+  postCat,
   putCat,
   deleteCat,
 } from '../controllers/cat-controller.js';

@@ -27,7 +27,8 @@ const findUserById = (id) => {
 
 const addUser = (user) => {
   const {name, username, email, role, password} = user;
-  const newId = userItems[0].user_id + 1;
+  const newId = userItems[1].user_id + 1; // pitää korjaa viel tulevaisuudessa
+
   userItems.unshift({
     user_id: newId,
     name,

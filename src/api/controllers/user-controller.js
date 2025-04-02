@@ -23,13 +23,31 @@ const postUser = (req, res) => {
   }
 };
 const putUser = (req, res) => {
-  // not implemented in this example, this is future homework
   res.sendStatus(200);
+  const {name, username, email, role, password} = req.body;
+  const user = findUserById(req.params.id);
+  if (user) {
+    user.name = name;
+    user.username = username;
+    user.email = email;
+    user.role = role;
+    user.password = password;
+    res.json({message: 'User item updated.', user});
+  } else {
+    res.sendStatus(404);
+  }
 };
-
 const deleteUser = (req, res) => {
-  // not implemented in this example, this is future homework
-  res.sendStatus(200);
+  const user = findUserById(req.params.id);
+  if (user) {
+    res.sendStatus(200);
+    const index = listAllUsers().indexOf(user);
+
+    listAllUsers().splice(index, 1);
+    res.json({message: 'User item deleted.'});
+  } else {
+    res.sendStatus(404);
+  }
 };
 
 export {getUser, getUserById, postUser, putUser, deleteUser};
