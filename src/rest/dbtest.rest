@@ -1,0 +1,18 @@
+# Get all cats
+GET http://localhost:3001/api/v1/cats
+
+# Get cats by user ID
+GET http://localhost:3001/api/v1/cats/owner/1
+
+# Delete a user (and their cats)
+DELETE http://localhost:3001/api/v1/users/1
+
+# Add a new cat
+POST http://localhost:3001/api/cats
+Content-Type: application/json
+
+{
+  "name": "Whiskers",
+  "age": 3,
+  "owner": 1
+}
