@@ -30,11 +30,13 @@ const authenticateToken = (req, res, next) => {
     return res.sendStatus(401);
   }
   try {
+    // eslint-disable-next-line no-undef
     res.locals.user = jwt.verify(token, process.env.JWT_SECRET);
     next();
+    // eslint-disable-next-line no-unused-vars
   } catch (err) {
     res.status(403).send({message: 'invalid token'});
   }
 };
 
-export default {authenticateToken, createThumbnail};
+export {authenticateToken, createThumbnail};
