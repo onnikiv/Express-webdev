@@ -1,10 +1,15 @@
 import express from 'express';
-import cors from 'cors'; // Import the cors package
+import cors from 'cors';
 import api from './api/index.js';
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ['http://127.0.0.1:5500', 'http://localhost:5500'],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
